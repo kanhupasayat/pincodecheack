@@ -84,6 +84,7 @@ function App() {
                 <div className="cloud cloud-1"></div>
                 <div className="cloud cloud-2"></div>
                 <div className="cloud cloud-3"></div>
+                <div className="cloud cloud-4"></div>
               </div>
 
               {/* Sun */}
@@ -94,6 +95,8 @@ function App() {
                 <div className="bird bird-1">🐦</div>
                 <div className="bird bird-2">🐦</div>
                 <div className="bird bird-3">🕊️</div>
+                <div className="bird bird-4">🐦</div>
+                <div className="bird bird-5">🕊️</div>
               </div>
 
               {/* Background Buildings */}
@@ -101,6 +104,8 @@ function App() {
                 <div className="building building-1"></div>
                 <div className="building building-2"></div>
                 <div className="building building-3"></div>
+                <div className="building building-4"></div>
+                <div className="building building-5"></div>
               </div>
 
               {/* Warehouse */}
@@ -125,6 +130,14 @@ function App() {
                 <div className="tree-trunk"></div>
               </div>
               <div className="tree tree-3">
+                <div className="tree-top"></div>
+                <div className="tree-trunk"></div>
+              </div>
+              <div className="tree tree-4">
+                <div className="tree-top palm"></div>
+                <div className="tree-trunk"></div>
+              </div>
+              <div className="tree tree-5">
                 <div className="tree-top"></div>
                 <div className="tree-trunk"></div>
               </div>
@@ -231,6 +244,8 @@ function App() {
                 <div className="grass g1"></div>
                 <div className="grass g2"></div>
                 <div className="grass g3"></div>
+                <div className="grass g4"></div>
+                <div className="grass g5"></div>
               </div>
 
               {/* Rating Stars */}

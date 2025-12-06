@@ -289,24 +289,31 @@ h1 {
   color: #e31837;
 }
 
-/* Truck Loading Animation - Ultimate Realistic Scene */
+/* Truck Loading Animation - Full Screen Scene */
 .loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #87CEEB 0%, #B0E2FF 40%, #E0F6FF 100%);
+  z-index: 9999;
   padding: 20px;
-  margin: 20px 0;
 }
 
 .truck-scene {
   width: 100%;
-  max-width: 450px;
-  height: 220px;
+  height: 60vh;
+  min-height: 300px;
+  max-height: 500px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #87CEEB 0%, #B0E2FF 50%, #E0F6FF 100%);
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  background: transparent;
+  border-radius: 0;
 }
 
 /* Sky & Clouds */
@@ -333,55 +340,77 @@ h1 {
 }
 
 .cloud-1 {
-  width: 60px;
-  height: 20px;
-  top: 15px;
-  left: 10%;
-  animation: cloud-move 8s linear infinite;
+  width: 100px;
+  height: 35px;
+  top: 8%;
+  left: 5%;
+  animation: cloud-move 15s linear infinite;
 }
 
 .cloud-1::before {
-  width: 25px;
-  height: 25px;
-  top: -12px;
-  left: 10px;
+  width: 45px;
+  height: 45px;
+  top: -22px;
+  left: 15px;
 }
 
 .cloud-1::after {
-  width: 20px;
-  height: 20px;
-  top: -8px;
-  left: 30px;
+  width: 35px;
+  height: 35px;
+  top: -15px;
+  left: 50px;
 }
 
 .cloud-2 {
-  width: 50px;
-  height: 16px;
-  top: 30px;
-  left: 60%;
-  animation: cloud-move 10s linear infinite;
+  width: 80px;
+  height: 28px;
+  top: 12%;
+  left: 55%;
+  animation: cloud-move 18s linear infinite;
 }
 
 .cloud-2::before {
-  width: 20px;
-  height: 20px;
-  top: -10px;
-  left: 8px;
+  width: 35px;
+  height: 35px;
+  top: -18px;
+  left: 12px;
 }
 
 .cloud-2::after {
-  width: 16px;
-  height: 16px;
-  top: -6px;
-  left: 25px;
+  width: 28px;
+  height: 28px;
+  top: -12px;
+  left: 40px;
 }
 
 .cloud-3 {
-  width: 45px;
-  height: 14px;
-  top: 20px;
-  left: 35%;
-  animation: cloud-move 12s linear infinite;
+  width: 70px;
+  height: 24px;
+  top: 5%;
+  left: 30%;
+  animation: cloud-move 20s linear infinite;
+}
+
+.cloud-4 {
+  width: 90px;
+  height: 30px;
+  top: 15%;
+  left: 75%;
+  animation: cloud-move 22s linear infinite;
+}
+
+.cloud-4::before {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 15px;
+}
+
+.cloud-4::after {
+  width: 30px;
+  height: 30px;
+  top: -12px;
+  left: 50px;
 }
 
 /* Birds */
@@ -396,34 +425,48 @@ h1 {
 
 .bird {
   position: absolute;
-  font-size: 12px;
+  font-size: 18px;
   animation: bird-fly 4s ease-in-out infinite;
 }
 
 .bird-1 {
-  top: 25px;
-  left: 20%;
+  top: 10%;
+  left: 15%;
   animation-delay: 0s;
 }
 
 .bird-2 {
-  top: 15px;
-  left: 50%;
+  top: 6%;
+  left: 45%;
   animation-delay: 1s;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .bird-3 {
-  top: 35px;
-  left: 70%;
+  top: 14%;
+  left: 65%;
   animation-delay: 2s;
-  font-size: 14px;
+  font-size: 20px;
+}
+
+.bird-4 {
+  top: 8%;
+  left: 80%;
+  animation-delay: 0.5s;
+  font-size: 16px;
+}
+
+.bird-5 {
+  top: 18%;
+  left: 25%;
+  animation-delay: 1.5s;
+  font-size: 12px;
 }
 
 /* Background Buildings */
 .buildings {
   position: absolute;
-  bottom: 45px;
+  bottom: 18%;
   left: 0;
   width: 100%;
   z-index: 1;
@@ -432,7 +475,7 @@ h1 {
 .building {
   position: absolute;
   background: linear-gradient(180deg, #a0a0a0, #808080);
-  border-radius: 2px 2px 0 0;
+  border-radius: 4px 4px 0 0;
 }
 
 .building::before {
@@ -443,75 +486,92 @@ h1 {
 }
 
 .building-1 {
-  width: 25px;
-  height: 45px;
-  right: 60px;
+  width: 50px;
+  height: 90px;
+  right: 8%;
   bottom: 0;
 }
 
 .building-1::before {
-  width: 8px;
-  height: 6px;
-  top: 8px;
-  left: 4px;
-  box-shadow: 12px 0 0 rgba(135, 206, 235, 0.5), 0 12px 0 rgba(135, 206, 235, 0.5), 12px 12px 0 rgba(135, 206, 235, 0.5);
+  width: 14px;
+  height: 10px;
+  top: 12px;
+  left: 8px;
+  box-shadow: 20px 0 0 rgba(135, 206, 235, 0.5), 0 20px 0 rgba(135, 206, 235, 0.5), 20px 20px 0 rgba(135, 206, 235, 0.5), 0 40px 0 rgba(135, 206, 235, 0.5), 20px 40px 0 rgba(135, 206, 235, 0.5);
 }
 
 .building-2 {
-  width: 20px;
-  height: 60px;
-  right: 90px;
+  width: 40px;
+  height: 120px;
+  right: 14%;
   bottom: 0;
 }
 
 .building-2::before {
-  width: 6px;
-  height: 5px;
-  top: 6px;
-  left: 3px;
-  box-shadow: 10px 0 0 rgba(135, 206, 235, 0.5), 0 10px 0 rgba(135, 206, 235, 0.5), 10px 10px 0 rgba(135, 206, 235, 0.5), 0 20px 0 rgba(135, 206, 235, 0.5), 10px 20px 0 rgba(135, 206, 235, 0.5);
+  width: 12px;
+  height: 10px;
+  top: 10px;
+  left: 6px;
+  box-shadow: 18px 0 0 rgba(135, 206, 235, 0.5), 0 18px 0 rgba(135, 206, 235, 0.5), 18px 18px 0 rgba(135, 206, 235, 0.5), 0 36px 0 rgba(135, 206, 235, 0.5), 18px 36px 0 rgba(135, 206, 235, 0.5), 0 54px 0 rgba(135, 206, 235, 0.5), 18px 54px 0 rgba(135, 206, 235, 0.5);
 }
 
 .building-3 {
-  width: 18px;
-  height: 35px;
-  right: 115px;
+  width: 35px;
+  height: 70px;
+  right: 20%;
+  bottom: 0;
+}
+
+.building-4 {
+  width: 45px;
+  height: 100px;
+  right: 25%;
+  bottom: 0;
+  background: linear-gradient(180deg, #888, #666);
+}
+
+.building-5 {
+  width: 30px;
+  height: 60px;
+  right: 30%;
   bottom: 0;
 }
 
 /* Sun */
 .sun {
   position: absolute;
-  top: 12px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
+  top: 5%;
+  right: 5%;
+  width: 60px;
+  height: 60px;
   background: #FFD93D;
   border-radius: 50%;
-  box-shadow: 0 0 20px #FFD93D, 0 0 40px #FFA500;
+  box-shadow: 0 0 40px #FFD93D, 0 0 80px #FFA500, 0 0 120px rgba(255,165,0,0.3);
   animation: sun-glow 2s ease-in-out infinite;
 }
 
 /* Warehouse */
 .warehouse {
   position: absolute;
-  left: 10px;
-  bottom: 35px;
+  left: 3%;
+  bottom: 18%;
   z-index: 5;
+  transform: scale(1.5);
+  transform-origin: bottom left;
 }
 
 .warehouse-roof {
-  width: 70px;
-  height: 20px;
+  width: 100px;
+  height: 30px;
   background: linear-gradient(135deg, #8B4513, #A0522D);
   clip-path: polygon(0 100%, 50% 0, 100% 100%);
 }
 
 .warehouse-body {
-  width: 70px;
-  height: 40px;
+  width: 100px;
+  height: 60px;
   background: linear-gradient(180deg, #DEB887, #D2B48C);
-  border: 2px solid #8B4513;
+  border: 3px solid #8B4513;
   position: relative;
 }
 
@@ -520,30 +580,31 @@ h1 {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 25px;
-  height: 30px;
+  width: 35px;
+  height: 45px;
   background: linear-gradient(180deg, #654321, #8B4513);
-  border-radius: 3px 3px 0 0;
+  border-radius: 5px 5px 0 0;
   animation: door-open 3s ease-in-out infinite;
 }
 
 .warehouse-sign {
   position: absolute;
-  top: 5px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 6px;
+  font-size: 10px;
   font-weight: bold;
   color: #e31837;
   white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 /* Flying Box */
 .flying-box {
   position: absolute;
-  font-size: 20px;
-  left: 50px;
-  top: 60px;
+  font-size: 35px;
+  left: 8%;
+  top: 30%;
   animation: box-to-truck 3s ease-in-out infinite;
   z-index: 10;
 }
@@ -551,22 +612,33 @@ h1 {
 /* Trees */
 .tree {
   position: absolute;
-  bottom: 45px;
+  bottom: 18%;
   z-index: 3;
+  transform: scale(1.5);
 }
 
 .tree-1 {
-  right: 25px;
+  right: 3%;
 }
 
 .tree-2 {
-  right: 5px;
-  transform: scale(0.7);
+  right: 1%;
+  transform: scale(1);
 }
 
 .tree-3 {
-  left: 85px;
-  transform: scale(0.6);
+  left: 22%;
+  transform: scale(1.2);
+}
+
+.tree-4 {
+  right: 35%;
+  transform: scale(1.3);
+}
+
+.tree-5 {
+  left: 35%;
+  transform: scale(0.9);
 }
 
 .tree-top {
@@ -603,33 +675,35 @@ h1 {
 /* Traffic Signal */
 .traffic-signal {
   position: absolute;
-  right: 50px;
-  bottom: 45px;
+  right: 6%;
+  bottom: 18%;
   z-index: 6;
+  transform: scale(1.8);
+  transform-origin: bottom center;
 }
 
 .signal-pole {
-  width: 4px;
-  height: 50px;
+  width: 6px;
+  height: 70px;
   background: #333;
   margin: 0 auto;
 }
 
 .signal-box {
-  width: 14px;
+  width: 20px;
   background: #222;
-  border-radius: 3px;
-  padding: 3px;
+  border-radius: 4px;
+  padding: 4px;
   position: absolute;
   top: 0;
-  left: -5px;
+  left: -7px;
 }
 
 .signal-light {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  margin: 2px auto;
+  margin: 3px auto;
   opacity: 0.3;
 }
 
@@ -639,24 +713,26 @@ h1 {
 
 .signal-light.active {
   opacity: 1;
-  box-shadow: 0 0 8px currentColor;
+  box-shadow: 0 0 12px currentColor;
   animation: signal-blink 2s ease-in-out infinite;
 }
 
 /* Milestone */
 .milestone {
   position: absolute;
-  left: 180px;
-  bottom: 45px;
+  left: 45%;
+  bottom: 18%;
   z-index: 6;
+  transform: scale(1.5);
+  transform-origin: bottom center;
 }
 
 .milestone-sign {
   background: #fff;
-  border: 2px solid #e31837;
-  border-radius: 4px;
-  padding: 3px 6px;
-  font-size: 7px;
+  border: 3px solid #e31837;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
   font-weight: bold;
   color: #e31837;
   white-space: nowrap;
@@ -664,8 +740,8 @@ h1 {
 }
 
 .milestone-pole {
-  width: 3px;
-  height: 20px;
+  width: 5px;
+  height: 30px;
   background: #666;
   margin: 0 auto;
 }
@@ -673,33 +749,33 @@ h1 {
 /* Delivery Scooter */
 .scooter {
   position: absolute;
-  bottom: 52px;
-  left: -30px;
+  bottom: 22%;
+  left: -80px;
   z-index: 9;
-  animation: scooter-move 4s linear infinite;
+  animation: scooter-move 6s linear infinite;
 }
 
 .scooter-body {
-  font-size: 24px;
+  font-size: 45px;
   transform: scaleX(-1);
 }
 
 .delivery-boy {
   position: absolute;
-  top: -8px;
-  left: 8px;
-  font-size: 12px;
+  top: -12px;
+  left: 14px;
+  font-size: 20px;
   animation: boy-wave 0.5s ease-in-out infinite;
 }
 
 /* Dog */
 .dog {
   position: absolute;
-  bottom: 52px;
-  left: 60px;
-  font-size: 16px;
+  bottom: 22%;
+  left: 10%;
+  font-size: 28px;
   z-index: 7;
-  animation: dog-run 0.3s steps(2) infinite, dog-chase 4s linear infinite;
+  animation: dog-run 0.3s steps(2) infinite, dog-chase 6s linear infinite;
 }
 
 /* Headlights */
@@ -750,10 +826,12 @@ h1 {
 /* Truck */
 .truck {
   position: absolute;
-  bottom: 38px;
-  left: 90px;
+  bottom: 18%;
+  left: 25%;
   z-index: 8;
   animation: truck-move 3s ease-in-out infinite;
+  transform: scale(2);
+  transform-origin: bottom center;
 }
 
 .truck-body {
@@ -762,11 +840,11 @@ h1 {
 }
 
 .truck-cargo {
-  width: 55px;
-  height: 35px;
+  width: 80px;
+  height: 50px;
   background: linear-gradient(180deg, #e31837, #b71c1c);
-  border-radius: 3px 3px 0 0;
-  border: 2px solid #8B0000;
+  border-radius: 5px 5px 0 0;
+  border: 3px solid #8B0000;
   position: relative;
   display: flex;
   align-items: center;
@@ -776,105 +854,105 @@ h1 {
 
 .cargo-boxes {
   display: flex;
-  gap: 2px;
-  font-size: 12px;
+  gap: 4px;
+  font-size: 18px;
   opacity: 0;
   animation: boxes-appear 3s ease-in-out infinite;
 }
 
 .truck-cabin {
-  width: 28px;
-  height: 30px;
+  width: 40px;
+  height: 45px;
   background: linear-gradient(180deg, #1a1a2e, #2d3436);
-  border-radius: 3px 6px 0 0;
-  margin-left: -3px;
+  border-radius: 5px 10px 0 0;
+  margin-left: -5px;
   position: relative;
-  border: 2px solid #0d0d0d;
+  border: 3px solid #0d0d0d;
 }
 
 .cabin-window {
   position: absolute;
-  top: 4px;
-  right: 3px;
-  width: 14px;
-  height: 12px;
+  top: 6px;
+  right: 5px;
+  width: 20px;
+  height: 18px;
   background: linear-gradient(135deg, #87CEEB, #5DADE2);
-  border-radius: 2px;
-  border: 1px solid #333;
+  border-radius: 3px;
+  border: 2px solid #333;
 }
 
 .cabin-door {
   position: absolute;
   bottom: 0;
-  right: 2px;
-  width: 12px;
-  height: 18px;
+  right: 3px;
+  width: 18px;
+  height: 28px;
   background: #2d3436;
-  border: 1px solid #555;
-  border-radius: 1px;
+  border: 2px solid #555;
+  border-radius: 2px;
 }
 
 .exhaust-pipe {
   position: absolute;
-  bottom: 5px;
-  left: -8px;
-  width: 8px;
-  height: 6px;
+  bottom: 8px;
+  left: -12px;
+  width: 12px;
+  height: 10px;
   background: #444;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .truck-base {
   position: absolute;
-  bottom: -3px;
+  bottom: -5px;
   left: 0;
-  width: 80px;
-  height: 6px;
+  width: 120px;
+  height: 10px;
   background: linear-gradient(180deg, #333, #1a1a1a);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 /* Smoke */
 .smoke-container {
   position: absolute;
-  bottom: 8px;
-  left: -20px;
+  bottom: 12px;
+  left: -30px;
 }
 
 .smoke {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background: rgba(150, 150, 150, 0.7);
   border-radius: 50%;
   animation: smoke-rise 1s ease-out infinite;
 }
 
 .smoke-1 { animation-delay: 0s; left: 0; }
-.smoke-2 { animation-delay: 0.25s; left: 5px; }
-.smoke-3 { animation-delay: 0.5s; left: 2px; }
-.smoke-4 { animation-delay: 0.75s; left: 7px; }
+.smoke-2 { animation-delay: 0.25s; left: 8px; }
+.smoke-3 { animation-delay: 0.5s; left: 4px; }
+.smoke-4 { animation-delay: 0.75s; left: 12px; }
 
 /* Wheels */
 .wheel-assembly {
   position: absolute;
-  bottom: -12px;
+  bottom: -18px;
 }
 
 .wheel-back {
-  left: 8px;
+  left: 12px;
 }
 
 .wheel-front {
-  left: 60px;
+  left: 90px;
 }
 
 .wheel {
-  width: 18px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   background: #1a1a1a;
   border-radius: 50%;
-  border: 3px solid #333;
+  border: 5px solid #333;
   position: relative;
   animation: wheel-spin 0.4s linear infinite;
 }
@@ -884,8 +962,8 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
   background: #666;
   border-radius: 50%;
 }
@@ -896,38 +974,38 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 35px;
+  height: 18%;
 }
 
 .road-surface {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 30px;
-  background: linear-gradient(180deg, #555 0%, #333 100%);
+  height: 100%;
+  background: linear-gradient(180deg, #555 0%, #444 50%, #333 100%);
 }
 
 .road-marking {
   position: absolute;
-  bottom: 13px;
+  bottom: 45%;
   width: 200%;
-  height: 4px;
+  height: 8px;
   background: repeating-linear-gradient(
     90deg,
     #FFD700 0px,
-    #FFD700 30px,
-    transparent 30px,
-    transparent 60px
+    #FFD700 50px,
+    transparent 50px,
+    transparent 100px
   );
-  animation: road-scroll 1s linear infinite;
+  animation: road-scroll 1.5s linear infinite;
 }
 
 .road-dust {
   position: absolute;
-  bottom: 25px;
-  left: 100px;
-  width: 30px;
-  height: 8px;
+  bottom: 70%;
+  left: 30%;
+  width: 60px;
+  height: 15px;
   background: radial-gradient(ellipse, rgba(139,119,101,0.5) 0%, transparent 70%);
   animation: dust-trail 3s ease-in-out infinite;
 }
@@ -935,14 +1013,14 @@ h1 {
 /* Second Truck */
 .truck-2 {
   position: absolute;
-  bottom: 55px;
-  right: -50px;
+  bottom: 25%;
+  right: -100px;
   z-index: 4;
-  animation: truck2-pass 5s linear infinite;
+  animation: truck2-pass 7s linear infinite;
 }
 
 .truck2-body {
-  font-size: 28px;
+  font-size: 55px;
   transform: scaleX(-1);
   opacity: 0.7;
 }
@@ -950,25 +1028,25 @@ h1 {
 /* Dust Particles */
 .dust-particles {
   position: absolute;
-  bottom: 50px;
-  left: 70px;
+  bottom: 22%;
+  left: 20%;
   z-index: 6;
 }
 
 .particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 8px;
+  height: 8px;
   background: rgba(139, 119, 101, 0.6);
   border-radius: 50%;
   animation: particle-float 1s ease-out infinite;
 }
 
 .p1 { left: 0; animation-delay: 0s; }
-.p2 { left: 8px; animation-delay: 0.2s; }
-.p3 { left: 4px; top: 5px; animation-delay: 0.4s; }
-.p4 { left: 12px; top: 3px; animation-delay: 0.6s; }
-.p5 { left: 6px; top: 8px; animation-delay: 0.8s; }
+.p2 { left: 15px; animation-delay: 0.2s; }
+.p3 { left: 8px; top: 10px; animation-delay: 0.4s; }
+.p4 { left: 22px; top: 6px; animation-delay: 0.6s; }
+.p5 { left: 12px; top: 15px; animation-delay: 0.8s; }
 
 /* Ground with Grass */
 .ground {
@@ -976,37 +1054,39 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10px;
+  height: 3%;
   background: linear-gradient(180deg, #228B22, #1a6b1a);
 }
 
 .grass {
   position: absolute;
   bottom: 100%;
-  width: 3px;
-  height: 8px;
+  width: 5px;
+  height: 15px;
   background: #32CD32;
   border-radius: 50% 50% 0 0;
   animation: grass-sway 1s ease-in-out infinite;
 }
 
-.g1 { left: 10%; animation-delay: 0s; }
-.g2 { left: 30%; animation-delay: 0.3s; height: 6px; }
-.g3 { left: 70%; animation-delay: 0.6s; height: 10px; }
+.g1 { left: 5%; animation-delay: 0s; }
+.g2 { left: 15%; animation-delay: 0.3s; height: 12px; }
+.g3 { left: 85%; animation-delay: 0.6s; height: 18px; }
+.g4 { left: 92%; animation-delay: 0.2s; height: 10px; }
+.g5 { left: 75%; animation-delay: 0.5s; height: 14px; }
 
 /* Rating Stars */
 .rating-stars {
   position: absolute;
-  top: 8px;
+  top: 3%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 3px;
+  gap: 8px;
   z-index: 20;
 }
 
 .star {
-  font-size: 12px;
+  font-size: 24px;
   opacity: 0;
   animation: star-appear 3s ease-in-out infinite;
 }
@@ -1019,14 +1099,18 @@ h1 {
 
 /* Progress Bar */
 .progress-container {
-  width: 100%;
-  max-width: 450px;
-  margin-top: 15px;
+  width: 90%;
+  max-width: 600px;
+  margin-top: 30px;
+  background: rgba(255,255,255,0.9);
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 }
 
 .progress-bar {
   width: 100%;
-  height: 8px;
+  height: 14px;
   background: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
@@ -1043,16 +1127,16 @@ h1 {
 
 .progress-text {
   text-align: center;
-  color: #666;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-top: 8px;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 12px;
 }
 
 /* Animations */
 @keyframes cloud-move {
-  0% { transform: translateX(-50px); }
-  100% { transform: translateX(150px); }
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(calc(100vw + 100px)); }
 }
 
 @keyframes bird-fly {
@@ -1073,8 +1157,8 @@ h1 {
 }
 
 @keyframes scooter-move {
-  0% { left: -50px; }
-  100% { left: 500px; }
+  0% { left: -100px; }
+  100% { left: calc(100vw + 100px); }
 }
 
 @keyframes boy-wave {
@@ -1088,8 +1172,8 @@ h1 {
 }
 
 @keyframes dog-chase {
-  0% { left: -20px; }
-  100% { left: 480px; }
+  0% { left: -50px; }
+  100% { left: calc(100vw + 50px); }
 }
 
 @keyframes headlight-blink {
@@ -1114,8 +1198,8 @@ h1 {
 }
 
 @keyframes truck2-pass {
-  0% { right: -80px; }
-  100% { right: 500px; }
+  0% { right: -150px; }
+  100% { right: calc(100vw + 150px); }
 }
 
 @keyframes particle-float {
@@ -1158,20 +1242,20 @@ h1 {
 
 @keyframes box-to-truck {
   0%, 15% {
-    left: 55px;
-    top: 65px;
+    left: 8%;
+    top: 30%;
     opacity: 1;
     transform: scale(1);
   }
   40% {
-    left: 120px;
-    top: 85px;
+    left: 22%;
+    top: 45%;
     opacity: 1;
     transform: scale(0.8);
   }
   50%, 100% {
-    left: 120px;
-    top: 95px;
+    left: 25%;
+    top: 50%;
     opacity: 0;
     transform: scale(0.5);
   }
@@ -1184,15 +1268,13 @@ h1 {
 
 @keyframes truck-move {
   0%, 50% {
-    left: 90px;
-    transform: translateX(0);
+    transform: scale(2) translateX(0);
   }
   55% {
-    transform: translateX(-2px);
+    transform: scale(2) translateX(-3px);
   }
   60%, 100% {
-    left: 90px;
-    transform: translateX(0);
+    transform: scale(2) translateX(0);
     animation-timing-function: ease-in-out;
   }
 }
@@ -1229,6 +1311,74 @@ h1 {
   50% { transform: scale(1.3); opacity: 0.7; }
 }
 
+/* Tablet responsive */
+@media (max-width: 768px) {
+  .truck-scene {
+    height: 50vh;
+  }
+
+  .truck {
+    left: 20%;
+    transform: scale(1.5);
+  }
+
+  @keyframes truck-move {
+    0%, 50% { transform: scale(1.5) translateX(0); }
+    55% { transform: scale(1.5) translateX(-3px); }
+    60%, 100% { transform: scale(1.5) translateX(0); }
+  }
+
+  .warehouse {
+    transform: scale(1.2);
+  }
+
+  .sun {
+    width: 45px;
+    height: 45px;
+  }
+
+  .building-1, .building-2, .building-3, .building-4, .building-5 {
+    transform: scale(0.8);
+  }
+
+  .traffic-signal {
+    transform: scale(1.3);
+  }
+
+  .milestone {
+    transform: scale(1.2);
+  }
+
+  .scooter-body {
+    font-size: 35px;
+  }
+
+  .dog {
+    font-size: 22px;
+  }
+
+  .truck2-body {
+    font-size: 40px;
+  }
+
+  .star {
+    font-size: 18px;
+  }
+
+  .progress-container {
+    padding: 18px 22px;
+  }
+
+  .progress-bar {
+    height: 12px;
+  }
+
+  .progress-text {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile responsive */
 @media (max-width: 480px) {
   .card {
     padding: 24px;
@@ -1248,5 +1398,112 @@ h1 {
 
   .details-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Animation mobile styles */
+  .truck-scene {
+    height: 45vh;
+    min-height: 250px;
+  }
+
+  .truck {
+    left: 15%;
+    transform: scale(1.2);
+  }
+
+  @keyframes truck-move {
+    0%, 50% { transform: scale(1.2) translateX(0); }
+    55% { transform: scale(1.2) translateX(-2px); }
+    60%, 100% { transform: scale(1.2) translateX(0); }
+  }
+
+  .warehouse {
+    transform: scale(0.9);
+    left: 2%;
+  }
+
+  .sun {
+    width: 35px;
+    height: 35px;
+    top: 3%;
+    right: 3%;
+  }
+
+  .cloud-1, .cloud-2, .cloud-3, .cloud-4 {
+    transform: scale(0.7);
+  }
+
+  .building-1, .building-2, .building-3, .building-4, .building-5 {
+    transform: scale(0.6);
+  }
+
+  .tree {
+    transform: scale(1);
+  }
+
+  .traffic-signal {
+    transform: scale(1);
+    right: 4%;
+  }
+
+  .milestone {
+    transform: scale(1);
+    left: 50%;
+  }
+
+  .scooter-body {
+    font-size: 28px;
+  }
+
+  .delivery-boy {
+    font-size: 14px;
+    top: -8px;
+    left: 10px;
+  }
+
+  .dog {
+    font-size: 18px;
+  }
+
+  .truck2-body {
+    font-size: 32px;
+  }
+
+  .flying-box {
+    font-size: 25px;
+  }
+
+  .star {
+    font-size: 16px;
+  }
+
+  .rating-stars {
+    gap: 5px;
+  }
+
+  .progress-container {
+    padding: 15px 18px;
+    margin-top: 20px;
+  }
+
+  .progress-bar {
+    height: 10px;
+  }
+
+  .progress-text {
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  .bird {
+    font-size: 14px;
+  }
+
+  .bird-2 {
+    font-size: 10px;
+  }
+
+  .bird-3 {
+    font-size: 16px;
   }
 }

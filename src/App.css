@@ -289,7 +289,7 @@ h1 {
   color: #e31837;
 }
 
-/* Truck Loading Animation - Realistic Scene */
+/* Truck Loading Animation - Ultimate Realistic Scene */
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -300,13 +300,13 @@ h1 {
 
 .truck-scene {
   width: 100%;
-  max-width: 400px;
-  height: 180px;
+  max-width: 450px;
+  height: 220px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: linear-gradient(180deg, #87CEEB 0%, #B0E2FF 50%, #E0F6FF 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
 /* Sky & Clouds */
@@ -374,6 +374,109 @@ h1 {
   height: 16px;
   top: -6px;
   left: 25px;
+}
+
+.cloud-3 {
+  width: 45px;
+  height: 14px;
+  top: 20px;
+  left: 35%;
+  animation: cloud-move 12s linear infinite;
+}
+
+/* Birds */
+.birds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 15;
+}
+
+.bird {
+  position: absolute;
+  font-size: 12px;
+  animation: bird-fly 4s ease-in-out infinite;
+}
+
+.bird-1 {
+  top: 25px;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.bird-2 {
+  top: 15px;
+  left: 50%;
+  animation-delay: 1s;
+  font-size: 10px;
+}
+
+.bird-3 {
+  top: 35px;
+  left: 70%;
+  animation-delay: 2s;
+  font-size: 14px;
+}
+
+/* Background Buildings */
+.buildings {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.building {
+  position: absolute;
+  background: linear-gradient(180deg, #a0a0a0, #808080);
+  border-radius: 2px 2px 0 0;
+}
+
+.building::before {
+  content: '';
+  position: absolute;
+  background: rgba(135, 206, 235, 0.5);
+  border: 1px solid #666;
+}
+
+.building-1 {
+  width: 25px;
+  height: 45px;
+  right: 60px;
+  bottom: 0;
+}
+
+.building-1::before {
+  width: 8px;
+  height: 6px;
+  top: 8px;
+  left: 4px;
+  box-shadow: 12px 0 0 rgba(135, 206, 235, 0.5), 0 12px 0 rgba(135, 206, 235, 0.5), 12px 12px 0 rgba(135, 206, 235, 0.5);
+}
+
+.building-2 {
+  width: 20px;
+  height: 60px;
+  right: 90px;
+  bottom: 0;
+}
+
+.building-2::before {
+  width: 6px;
+  height: 5px;
+  top: 6px;
+  left: 3px;
+  box-shadow: 10px 0 0 rgba(135, 206, 235, 0.5), 0 10px 0 rgba(135, 206, 235, 0.5), 10px 10px 0 rgba(135, 206, 235, 0.5), 0 20px 0 rgba(135, 206, 235, 0.5), 10px 20px 0 rgba(135, 206, 235, 0.5);
+}
+
+.building-3 {
+  width: 18px;
+  height: 35px;
+  right: 115px;
+  bottom: 0;
 }
 
 /* Sun */
@@ -445,12 +548,25 @@ h1 {
   z-index: 10;
 }
 
-/* Tree */
+/* Trees */
 .tree {
   position: absolute;
-  right: 30px;
-  bottom: 35px;
+  bottom: 45px;
   z-index: 3;
+}
+
+.tree-1 {
+  right: 25px;
+}
+
+.tree-2 {
+  right: 5px;
+  transform: scale(0.7);
+}
+
+.tree-3 {
+  left: 85px;
+  transform: scale(0.6);
 }
 
 .tree-top {
@@ -472,11 +588,163 @@ h1 {
   border-bottom: 28px solid #2E8B2E;
 }
 
+.tree-top.palm {
+  border-bottom-color: #32CD32;
+  border-radius: 50%;
+}
+
 .tree-trunk {
   width: 10px;
   height: 15px;
   background: #8B4513;
   margin: 0 auto;
+}
+
+/* Traffic Signal */
+.traffic-signal {
+  position: absolute;
+  right: 50px;
+  bottom: 45px;
+  z-index: 6;
+}
+
+.signal-pole {
+  width: 4px;
+  height: 50px;
+  background: #333;
+  margin: 0 auto;
+}
+
+.signal-box {
+  width: 14px;
+  background: #222;
+  border-radius: 3px;
+  padding: 3px;
+  position: absolute;
+  top: 0;
+  left: -5px;
+}
+
+.signal-light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 2px auto;
+  opacity: 0.3;
+}
+
+.signal-light.red { background: #ff0000; }
+.signal-light.yellow { background: #ffff00; }
+.signal-light.green { background: #00ff00; }
+
+.signal-light.active {
+  opacity: 1;
+  box-shadow: 0 0 8px currentColor;
+  animation: signal-blink 2s ease-in-out infinite;
+}
+
+/* Milestone */
+.milestone {
+  position: absolute;
+  left: 180px;
+  bottom: 45px;
+  z-index: 6;
+}
+
+.milestone-sign {
+  background: #fff;
+  border: 2px solid #e31837;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 7px;
+  font-weight: bold;
+  color: #e31837;
+  white-space: nowrap;
+  animation: milestone-bounce 1s ease-in-out infinite;
+}
+
+.milestone-pole {
+  width: 3px;
+  height: 20px;
+  background: #666;
+  margin: 0 auto;
+}
+
+/* Delivery Scooter */
+.scooter {
+  position: absolute;
+  bottom: 52px;
+  left: -30px;
+  z-index: 9;
+  animation: scooter-move 4s linear infinite;
+}
+
+.scooter-body {
+  font-size: 24px;
+  transform: scaleX(-1);
+}
+
+.delivery-boy {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  animation: boy-wave 0.5s ease-in-out infinite;
+}
+
+/* Dog */
+.dog {
+  position: absolute;
+  bottom: 52px;
+  left: 60px;
+  font-size: 16px;
+  z-index: 7;
+  animation: dog-run 0.3s steps(2) infinite, dog-chase 4s linear infinite;
+}
+
+/* Headlights */
+.headlights {
+  position: absolute;
+  right: -15px;
+  top: 20px;
+}
+
+.headlight {
+  width: 6px;
+  height: 6px;
+  background: #FFD700;
+  border-radius: 50%;
+  animation: headlight-blink 0.5s ease-in-out infinite;
+}
+
+.light-beam {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 20px;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(255,215,0,0.6), transparent);
+  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 70%);
+  animation: beam-flicker 0.3s ease-in-out infinite;
+}
+
+/* Horn Effect */
+.horn-effect {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  font-size: 14px;
+  opacity: 0;
+  animation: horn-sound 3s ease-in-out infinite;
+}
+
+/* Driver */
+.driver {
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  left: 2px;
+  animation: driver-wave 1s ease-in-out infinite;
 }
 
 /* Truck */
@@ -664,42 +932,217 @@ h1 {
   animation: dust-trail 3s ease-in-out infinite;
 }
 
-/* Ground */
+/* Second Truck */
+.truck-2 {
+  position: absolute;
+  bottom: 55px;
+  right: -50px;
+  z-index: 4;
+  animation: truck2-pass 5s linear infinite;
+}
+
+.truck2-body {
+  font-size: 28px;
+  transform: scaleX(-1);
+  opacity: 0.7;
+}
+
+/* Dust Particles */
+.dust-particles {
+  position: absolute;
+  bottom: 50px;
+  left: 70px;
+  z-index: 6;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(139, 119, 101, 0.6);
+  border-radius: 50%;
+  animation: particle-float 1s ease-out infinite;
+}
+
+.p1 { left: 0; animation-delay: 0s; }
+.p2 { left: 8px; animation-delay: 0.2s; }
+.p3 { left: 4px; top: 5px; animation-delay: 0.4s; }
+.p4 { left: 12px; top: 3px; animation-delay: 0.6s; }
+.p5 { left: 6px; top: 8px; animation-delay: 0.8s; }
+
+/* Ground with Grass */
 .ground {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 5px;
-  background: #228B22;
+  height: 10px;
+  background: linear-gradient(180deg, #228B22, #1a6b1a);
 }
 
-/* Loading Status */
-.loading-status {
+.grass {
+  position: absolute;
+  bottom: 100%;
+  width: 3px;
+  height: 8px;
+  background: #32CD32;
+  border-radius: 50% 50% 0 0;
+  animation: grass-sway 1s ease-in-out infinite;
+}
+
+.g1 { left: 10%; animation-delay: 0s; }
+.g2 { left: 30%; animation-delay: 0.3s; height: 6px; }
+.g3 { left: 70%; animation-delay: 0.6s; height: 10px; }
+
+/* Rating Stars */
+.rating-stars {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 3px;
+  z-index: 20;
+}
+
+.star {
+  font-size: 12px;
+  opacity: 0;
+  animation: star-appear 3s ease-in-out infinite;
+}
+
+.s1 { animation-delay: 0s; }
+.s2 { animation-delay: 0.3s; }
+.s3 { animation-delay: 0.6s; }
+.s4 { animation-delay: 0.9s; }
+.s5 { animation-delay: 1.2s; }
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  max-width: 450px;
   margin-top: 15px;
 }
 
-.status-dot {
-  width: 10px;
-  height: 10px;
-  background: #e31837;
-  border-radius: 50%;
-  animation: dot-pulse 1s ease-in-out infinite;
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.loading-text {
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #e31837, #ff6b6b, #e31837);
+  background-size: 200% 100%;
+  border-radius: 10px;
+  animation: progress-load 2.5s ease-in-out infinite, progress-shimmer 1s linear infinite;
+}
+
+.progress-text {
+  text-align: center;
   color: #666;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
+  margin-top: 8px;
 }
 
 /* Animations */
 @keyframes cloud-move {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100px); }
+  0% { transform: translateX(-50px); }
+  100% { transform: translateX(150px); }
+}
+
+@keyframes bird-fly {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-8px) translateX(10px); }
+  50% { transform: translateY(0) translateX(20px); }
+  75% { transform: translateY(-5px) translateX(30px); }
+}
+
+@keyframes signal-blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px #00ff00; }
+  50% { opacity: 0.7; box-shadow: 0 0 15px #00ff00; }
+}
+
+@keyframes milestone-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes scooter-move {
+  0% { left: -50px; }
+  100% { left: 500px; }
+}
+
+@keyframes boy-wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+
+@keyframes dog-run {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(-1); }
+}
+
+@keyframes dog-chase {
+  0% { left: -20px; }
+  100% { left: 480px; }
+}
+
+@keyframes headlight-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes beam-flicker {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes horn-sound {
+  0%, 20%, 100% { opacity: 0; transform: scale(0.5); }
+  25%, 35% { opacity: 1; transform: scale(1.2); }
+  40% { opacity: 0; transform: scale(0.5); }
+}
+
+@keyframes driver-wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+@keyframes truck2-pass {
+  0% { right: -80px; }
+  100% { right: 500px; }
+}
+
+@keyframes particle-float {
+  0% { opacity: 0.8; transform: translateY(0) translateX(0); }
+  100% { opacity: 0; transform: translateY(-15px) translateX(-10px); }
+}
+
+@keyframes grass-sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes star-appear {
+  0%, 30% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1.2); }
+  70%, 100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes progress-load {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 95%; }
+}
+
+@keyframes progress-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 @keyframes sun-glow {

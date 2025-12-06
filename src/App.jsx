@@ -83,10 +83,25 @@ function App() {
               <div className="sky">
                 <div className="cloud cloud-1"></div>
                 <div className="cloud cloud-2"></div>
+                <div className="cloud cloud-3"></div>
               </div>
 
               {/* Sun */}
               <div className="sun"></div>
+
+              {/* Birds */}
+              <div className="birds">
+                <div className="bird bird-1">🐦</div>
+                <div className="bird bird-2">🐦</div>
+                <div className="bird bird-3">🕊️</div>
+              </div>
+
+              {/* Background Buildings */}
+              <div className="buildings">
+                <div className="building building-1"></div>
+                <div className="building building-2"></div>
+                <div className="building building-3"></div>
+              </div>
 
               {/* Warehouse */}
               <div className="warehouse">
@@ -100,14 +115,58 @@ function App() {
               {/* Box flying into truck */}
               <div className="flying-box">📦</div>
 
-              {/* Tree */}
-              <div className="tree">
+              {/* Trees */}
+              <div className="tree tree-1">
+                <div className="tree-top"></div>
+                <div className="tree-trunk"></div>
+              </div>
+              <div className="tree tree-2">
+                <div className="tree-top palm"></div>
+                <div className="tree-trunk"></div>
+              </div>
+              <div className="tree tree-3">
                 <div className="tree-top"></div>
                 <div className="tree-trunk"></div>
               </div>
 
-              {/* Truck */}
+              {/* Traffic Signal */}
+              <div className="traffic-signal">
+                <div className="signal-pole"></div>
+                <div className="signal-box">
+                  <div className="signal-light red"></div>
+                  <div className="signal-light yellow"></div>
+                  <div className="signal-light green active"></div>
+                </div>
+              </div>
+
+              {/* Milestone */}
+              <div className="milestone">
+                <div className="milestone-sign">
+                  <span>📍 Delivering...</span>
+                </div>
+                <div className="milestone-pole"></div>
+              </div>
+
+              {/* Delivery Scooter */}
+              <div className="scooter">
+                <div className="scooter-body">🛵</div>
+                <div className="delivery-boy">👨</div>
+              </div>
+
+              {/* Dog chasing */}
+              <div className="dog">🐕</div>
+
+              {/* Main Truck */}
               <div className="truck">
+                {/* Headlights */}
+                <div className="headlights">
+                  <div className="headlight"></div>
+                  <div className="light-beam"></div>
+                </div>
+
+                {/* Horn visual */}
+                <div className="horn-effect">📢</div>
+
                 {/* Smoke from exhaust */}
                 <div className="smoke-container">
                   <div className="smoke smoke-1"></div>
@@ -124,7 +183,9 @@ function App() {
                     </div>
                   </div>
                   <div className="truck-cabin">
-                    <div className="cabin-window"></div>
+                    <div className="cabin-window">
+                      <div className="driver">🙋‍♂️</div>
+                    </div>
                     <div className="cabin-door"></div>
                   </div>
                 </div>
@@ -145,20 +206,49 @@ function App() {
                 </div>
               </div>
 
+              {/* Second Truck passing */}
+              <div className="truck-2">
+                <div className="truck2-body">🚛</div>
+              </div>
+
+              {/* Dust Particles */}
+              <div className="dust-particles">
+                <div className="particle p1"></div>
+                <div className="particle p2"></div>
+                <div className="particle p3"></div>
+                <div className="particle p4"></div>
+                <div className="particle p5"></div>
+              </div>
+
               {/* Road */}
               <div className="road">
                 <div className="road-surface"></div>
                 <div className="road-marking"></div>
-                <div className="road-dust"></div>
               </div>
 
               {/* Ground/Grass */}
-              <div className="ground"></div>
+              <div className="ground">
+                <div className="grass g1"></div>
+                <div className="grass g2"></div>
+                <div className="grass g3"></div>
+              </div>
+
+              {/* Rating Stars */}
+              <div className="rating-stars">
+                <span className="star s1">⭐</span>
+                <span className="star s2">⭐</span>
+                <span className="star s3">⭐</span>
+                <span className="star s4">⭐</span>
+                <span className="star s5">⭐</span>
+              </div>
             </div>
 
-            <div className="loading-status">
-              <div className="status-dot"></div>
-              <p className="loading-text">Loading package & checking delivery route...</p>
+            {/* Progress Bar */}
+            <div className="progress-container">
+              <div className="progress-bar">
+                <div className="progress-fill"></div>
+              </div>
+              <p className="progress-text">Checking serviceability...</p>
             </div>
           </div>
         )}

@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     // Warehouse pincode (hardcoded as per requirement)
     const warehousePincode = '203207';
 
-    // Call iThink Logistics API for both pincodes
+    // Call iThink Logistics API
     const response = await fetch('https://my.ithinklogistics.com/api_v3/pincode/check.json', {
       method: 'POST',
       headers: {
@@ -58,82 +58,79 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    // Check if API call was successful
     if (data.status !== 'success' || !data.data) {
       return res.status(200).json({
-        success: false,
-        message: 'Pincode not serviceable or invalid response from logistics API'
+        success: true,
+        data: {
+          pincode: pincode,
+          warehousePincode: warehousePincode,
+          deliveryAvailable: false,
+          delhivery: null,
+          remark: null,
+          city: null,
+          state: null
+        }
       });
     }
 
-    // Get pincode data
     const pincodeData = data.data[pincode];
 
     if (!pincodeData) {
       return res.status(200).json({
-        success: false,
-        message: 'This pincode is not serviceable'
-      });
-    }
-
-    // Fields to exclude (not actual carriers)
-    const excludeFields = ['remark', 'state_name', 'city_name', 'city_id', 'state_id', 'district', 'state', 'pin'];
-
-    // Process carriers data
-    const carriers = Object.keys(pincodeData).filter(
-      key => !excludeFields.includes(key.toLowerCase())
-    );
-    const allCarriers = [];
-    let deliveryAvailable = false;
-    let codAvailable = false;
-    let bestCarrier = null;
-
-    for (const carrierName of carriers) {
-      const carrier = pincodeData[carrierName];
-
-      // Skip if carrier data is not an object
-      if (typeof carrier !== 'object' || carrier === null) continue;
-
-      const isDeliveryAvailable = carrier.prepaid === 'Y' || carrier.cod === 'Y';
-      const isCodAvailable = carrier.cod === 'Y';
-
-      if (isDeliveryAvailable) {
-        deliveryAvailable = true;
-
-        if (!bestCarrier) {
-          bestCarrier = {
-            name: carrierName.charAt(0).toUpperCase() + carrierName.slice(1),
-            cod: isCodAvailable
-          };
+        success: true,
+        data: {
+          pincode: pincode,
+          warehousePincode: warehousePincode,
+          deliveryAvailable: false,
+          delhivery: null,
+          remark: null,
+          city: null,
+          state: null
         }
-      }
-
-      if (isCodAvailable) {
-        codAvailable = true;
-      }
-
-      allCarriers.push({
-        name: carrierName.charAt(0).toUpperCase() + carrierName.slice(1),
-        cod: isCodAvailable,
-        prepaid: carrier.prepaid === 'Y',
-        pickup: carrier.pickup === 'Y',
-        days: carrier.delivery_days || '2-5',
-        district: carrier.district,
-        state: carrier.state_code
       });
     }
 
-    // Return processed response
+    // Get Delhivery data
+    const delhivery = pincodeData.Delhivery || pincodeData.delhivery;
+
+    if (delhivery && typeof delhivery === 'object') {
+      return res.status(200).json({
+        success: true,
+        data: {
+          pincode: pincode,
+          warehousePincode: warehousePincode,
+          deliveryAvailable: true,
+          remark: pincodeData.remark || null,
+          city: pincodeData.city_name || null,
+          state: pincodeData.state_name || null,
+          district: delhivery.district || null,
+          stateCode: delhivery.state_code || null,
+          area: pincodeData.area_name || null,
+          delhivery: {
+            prepaid: delhivery.prepaid === 'Y',
+            cod: delhivery.cod === 'Y',
+            pickup: delhivery.pickup === 'Y',
+            district: delhivery.district,
+            stateCode: delhivery.state_code,
+            sortCode: delhivery.sort_code
+          }
+        }
+      });
+    }
+
+    // Delhivery not available
     return res.status(200).json({
       success: true,
       data: {
         pincode: pincode,
         warehousePincode: warehousePincode,
-        deliveryAvailable: deliveryAvailable,
-        codAvailable: codAvailable,
-        carrier: bestCarrier?.name || null,
-        estimatedDays: '2-5',
-        allCarriers: allCarriers
+        deliveryAvailable: false,
+        delhivery: null,
+        remark: pincodeData.remark || null,
+        city: pincodeData.city_name || null,
+        state: pincodeData.state_name || null,
+        district: pincodeData.district_name || null,
+        area: pincodeData.area_name || null
       }
     });
 

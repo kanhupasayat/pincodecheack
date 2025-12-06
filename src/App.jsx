@@ -50,7 +50,7 @@ function App() {
     <div className="container">
       <div className="card">
         <h1>Pincode Serviceability Check</h1>
-        <p className="subtitle">Check if delivery is available at your location</p>
+        <p className="subtitle">Check Delhivery services available at your location</p>
 
         <div className="input-group">
           <input
@@ -77,52 +77,91 @@ function App() {
         )}
 
         {result && (
-          <div className="result-box">
-            <h2>Service Details</h2>
-
-            <div className="result-grid">
-              <div className={`result-item ${result.deliveryAvailable ? 'success' : 'fail'}`}>
-                <span className="label">Delivery</span>
-                <span className="value">
-                  {result.deliveryAvailable ? '✓ Available' : '✗ Not Available'}
-                </span>
-              </div>
-
-              <div className={`result-item ${result.codAvailable ? 'success' : 'fail'}`}>
-                <span className="label">COD</span>
-                <span className="value">
-                  {result.codAvailable ? '✓ Yes' : '✗ No'}
-                </span>
-              </div>
-
-              {result.carrier && (
-                <div className="result-item info">
-                  <span className="label">Delivery Partner</span>
-                  <span className="value">{result.carrier}</span>
+          <div className="result-container">
+            {result.deliveryAvailable && (result.delhivery?.prepaid || result.delhivery?.cod) ? (
+              <>
+                <div className="status-banner success">
+                  <span className="status-icon">✓</span>
+                  <div>
+                    <strong>Delivery Available!</strong>
+                    <p>Pincode: {result.pincode}</p>
+                  </div>
                 </div>
-              )}
 
-              {result.estimatedDays && (
-                <div className="result-item info">
-                  <span className="label">Estimated Delivery</span>
-                  <span className="value">{result.estimatedDays} days</span>
+                <div className="location-details">
+                  <h3>Location Details</h3>
+                  <div className="details-grid">
+                    {result.city && (
+                      <div className="detail-item">
+                        <span className="detail-label">City</span>
+                        <span className="detail-value">{result.city}</span>
+                      </div>
+                    )}
+                    {result.district && (
+                      <div className="detail-item">
+                        <span className="detail-label">District</span>
+                        <span className="detail-value">{result.district}</span>
+                      </div>
+                    )}
+                    {result.state && (
+                      <div className="detail-item">
+                        <span className="detail-label">State</span>
+                        <span className="detail-value">{result.state}</span>
+                      </div>
+                    )}
+                    {result.stateCode && (
+                      <div className="detail-item">
+                        <span className="detail-label">State Code</span>
+                        <span className="detail-value">{result.stateCode}</span>
+                      </div>
+                    )}
+                    {result.area && (
+                      <div className="detail-item">
+                        <span className="detail-label">Area</span>
+                        <span className="detail-value">{result.area}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-            </div>
 
-            {result.allCarriers && result.allCarriers.length > 0 && (
-              <div className="carriers-section">
-                <h3>Available Carriers</h3>
-                <div className="carriers-list">
-                  {result.allCarriers.map((carrier, index) => (
-                    <div key={index} className="carrier-item">
-                      <span className="carrier-name">{carrier.name}</span>
-                      <span className="carrier-days">{carrier.days} days</span>
-                      <span className={`carrier-cod ${carrier.cod ? 'yes' : 'no'}`}>
-                        COD: {carrier.cod ? 'Yes' : 'No'}
-                      </span>
+                {result.remark && (
+                  <div className="remark-box">
+                    {result.remark}
+                  </div>
+                )}
+
+                <div className="service-card">
+                  <div className="service-header">
+                    <img src="https://www.delhivery.com/favicon.ico" alt="Delhivery" className="service-logo" />
+                    <h3>Delhivery Services</h3>
+                  </div>
+
+                  <div className="service-items">
+                    <div className={`service-item ${result.delhivery.prepaid ? 'available' : 'not-available'}`}>
+                      <span className="icon">{result.delhivery.prepaid ? '✓' : '✗'}</span>
+                      <span>Pre-paid Delivery</span>
                     </div>
-                  ))}
+
+                    <div className={`service-item ${result.delhivery.cod ? 'available' : 'not-available'}`}>
+                      <span className="icon">{result.delhivery.cod ? '✓' : '✗'}</span>
+                      <span>Cash on Delivery (COD)</span>
+                    </div>
+
+                    {result.delhivery.pickup && (
+                      <div className="service-item available">
+                        <span className="icon">✓</span>
+                        <span>Pickup Available</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="status-banner fail">
+                <span className="status-icon">✗</span>
+                <div>
+                  <strong>Delivery Not Available</strong>
+                  <p>Sorry, delivery is not available for pincode {result.pincode}</p>
                 </div>
               </div>
             )}

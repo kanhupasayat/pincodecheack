@@ -76,6 +76,27 @@ function App() {
           </div>
         )}
 
+        {loading && (
+          <div className="loading-container">
+            <div className="truck-animation">
+              <div className="road">
+                <div className="truck">
+                  <div className="truck-body">
+                    <div className="truck-cargo"></div>
+                    <div className="truck-cabin"></div>
+                  </div>
+                  <div className="truck-wheels">
+                    <div className="wheel wheel-back"></div>
+                    <div className="wheel wheel-front"></div>
+                  </div>
+                </div>
+                <div className="road-line"></div>
+              </div>
+            </div>
+            <p className="loading-text">Checking serviceability...</p>
+          </div>
+        )}
+
         {result && (
           <div className="result-container">
             {/* Status Banner */}

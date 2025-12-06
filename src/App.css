@@ -289,6 +289,165 @@ h1 {
   color: #e31837;
 }
 
+/* Truck Loading Animation */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  margin: 20px 0;
+}
+
+.truck-animation {
+  width: 100%;
+  max-width: 300px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.road {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  height: 60px;
+}
+
+.truck {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: truck-bounce 0.3s ease-in-out infinite;
+}
+
+.truck-body {
+  display: flex;
+  align-items: flex-end;
+}
+
+.truck-cargo {
+  width: 60px;
+  height: 35px;
+  background: linear-gradient(135deg, #e31837, #b71c1c);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+}
+
+.truck-cargo::before {
+  content: '📦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+
+.truck-cabin {
+  width: 30px;
+  height: 28px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 4px 8px 0 0;
+  margin-left: -2px;
+  position: relative;
+}
+
+.truck-cabin::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 4px;
+  width: 15px;
+  height: 12px;
+  background: linear-gradient(135deg, #87ceeb, #5dade2);
+  border-radius: 2px;
+}
+
+.truck-wheels {
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.wheel {
+  width: 16px;
+  height: 16px;
+  background: #333;
+  border-radius: 50%;
+  border: 3px solid #666;
+  animation: wheel-spin 0.3s linear infinite;
+}
+
+.wheel-back {
+  margin-left: 5px;
+}
+
+.wheel-front {
+  margin-right: -20px;
+}
+
+.road-line {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #666 0px,
+    #666 20px,
+    transparent 20px,
+    transparent 40px
+  );
+  animation: road-move 0.5s linear infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 500;
+  animation: pulse-text 1.5s ease-in-out infinite;
+}
+
+@keyframes truck-bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-3px);
+  }
+}
+
+@keyframes wheel-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes road-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes pulse-text {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 @media (max-width: 480px) {
   .card {
     padding: 24px;

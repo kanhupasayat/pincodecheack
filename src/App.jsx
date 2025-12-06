@@ -184,7 +184,39 @@ function App() {
               </div>
             )}
 
-            {/* Location Details - Always Show */}
+            {/* Delhivery Services - Top */}
+            <div className="service-card">
+              <div className="service-header">
+                <img src="https://www.delhivery.com/favicon.ico" alt="Delhivery" className="service-logo" />
+                <h3>Delhivery Services</h3>
+              </div>
+
+              <div className="service-items">
+                <div className={`service-item ${result.delhivery?.prepaid ? 'available' : 'not-available'}`}>
+                  <span className="icon">{result.delhivery?.prepaid ? '✓' : '✗'}</span>
+                  <span>Pre-paid Delivery</span>
+                </div>
+
+                <div className={`service-item ${result.delhivery?.cod ? 'available' : 'not-available'}`}>
+                  <span className="icon">{result.delhivery?.cod ? '✓' : '✗'}</span>
+                  <span>Cash on Delivery (COD)</span>
+                </div>
+
+                <div className={`service-item ${result.delhivery?.pickup ? 'available' : 'not-available'}`}>
+                  <span className="icon">{result.delhivery?.pickup ? '✓' : '✗'}</span>
+                  <span>Pickup Service</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Remark */}
+            {result.remark && (
+              <div className="remark-box">
+                {result.remark}
+              </div>
+            )}
+
+            {/* Location Details - Bottom */}
             <div className="location-details">
               <h3>Location Details</h3>
               <div className="details-grid">
@@ -216,38 +248,6 @@ function App() {
                     <span className="detail-value">{result.area}</span>
                   </div>
                 )}
-              </div>
-            </div>
-
-            {/* Remark */}
-            {result.remark && (
-              <div className="remark-box">
-                {result.remark}
-              </div>
-            )}
-
-            {/* Delhivery Services - Always Show */}
-            <div className="service-card">
-              <div className="service-header">
-                <img src="https://www.delhivery.com/favicon.ico" alt="Delhivery" className="service-logo" />
-                <h3>Delhivery Services</h3>
-              </div>
-
-              <div className="service-items">
-                <div className={`service-item ${result.delhivery?.prepaid ? 'available' : 'not-available'}`}>
-                  <span className="icon">{result.delhivery?.prepaid ? '✓' : '✗'}</span>
-                  <span>Pre-paid Delivery</span>
-                </div>
-
-                <div className={`service-item ${result.delhivery?.cod ? 'available' : 'not-available'}`}>
-                  <span className="icon">{result.delhivery?.cod ? '✓' : '✗'}</span>
-                  <span>Cash on Delivery (COD)</span>
-                </div>
-
-                <div className={`service-item ${result.delhivery?.pickup ? 'available' : 'not-available'}`}>
-                  <span className="icon">{result.delhivery?.pickup ? '✓' : '✗'}</span>
-                  <span>Pickup Service</span>
-                </div>
               </div>
             </div>
           </div>

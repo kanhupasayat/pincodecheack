@@ -78,22 +78,88 @@ function App() {
 
         {loading && (
           <div className="loading-container">
-            <div className="truck-animation">
-              <div className="road">
-                <div className="truck">
-                  <div className="truck-body">
-                    <div className="truck-cargo"></div>
-                    <div className="truck-cabin"></div>
+            <div className="truck-scene">
+              {/* Sky with clouds */}
+              <div className="sky">
+                <div className="cloud cloud-1"></div>
+                <div className="cloud cloud-2"></div>
+              </div>
+
+              {/* Sun */}
+              <div className="sun"></div>
+
+              {/* Warehouse */}
+              <div className="warehouse">
+                <div className="warehouse-roof"></div>
+                <div className="warehouse-body">
+                  <div className="warehouse-door"></div>
+                  <div className="warehouse-sign">DELHIVERY</div>
+                </div>
+              </div>
+
+              {/* Box flying into truck */}
+              <div className="flying-box">📦</div>
+
+              {/* Tree */}
+              <div className="tree">
+                <div className="tree-top"></div>
+                <div className="tree-trunk"></div>
+              </div>
+
+              {/* Truck */}
+              <div className="truck">
+                {/* Smoke from exhaust */}
+                <div className="smoke-container">
+                  <div className="smoke smoke-1"></div>
+                  <div className="smoke smoke-2"></div>
+                  <div className="smoke smoke-3"></div>
+                  <div className="smoke smoke-4"></div>
+                </div>
+
+                <div className="truck-body">
+                  <div className="truck-cargo">
+                    <div className="cargo-boxes">
+                      <span>📦</span>
+                      <span>📦</span>
+                    </div>
                   </div>
-                  <div className="truck-wheels">
-                    <div className="wheel wheel-back"></div>
-                    <div className="wheel wheel-front"></div>
+                  <div className="truck-cabin">
+                    <div className="cabin-window"></div>
+                    <div className="cabin-door"></div>
                   </div>
                 </div>
-                <div className="road-line"></div>
+
+                <div className="exhaust-pipe"></div>
+                <div className="truck-base"></div>
+
+                {/* Wheels with details */}
+                <div className="wheel-assembly wheel-back">
+                  <div className="wheel">
+                    <div className="wheel-hub"></div>
+                  </div>
+                </div>
+                <div className="wheel-assembly wheel-front">
+                  <div className="wheel">
+                    <div className="wheel-hub"></div>
+                  </div>
+                </div>
               </div>
+
+              {/* Road */}
+              <div className="road">
+                <div className="road-surface"></div>
+                <div className="road-marking"></div>
+                <div className="road-dust"></div>
+              </div>
+
+              {/* Ground/Grass */}
+              <div className="ground"></div>
             </div>
-            <p className="loading-text">Checking serviceability...</p>
+
+            <div className="loading-status">
+              <div className="status-dot"></div>
+              <p className="loading-text">Loading package & checking delivery route...</p>
+            </div>
           </div>
         )}
 

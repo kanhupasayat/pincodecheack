@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
   const [pincode, setPincode] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [showAnimation, setShowAnimation] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
 
@@ -13,18 +13,22 @@ function App() {
       return
     }
 
-    setLoading(true)
+    setShowAnimation(true)
     setError('')
     setResult(null)
 
     try {
-      const response = await fetch('/api/check-pincode', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ pincode }),
-      })
+      // Wait for both: API call AND minimum 5 seconds
+      const [response] = await Promise.all([
+        fetch('/api/check-pincode', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ pincode }),
+        }),
+        new Promise(resolve => setTimeout(resolve, 5000)) // 5 second minimum
+      ])
 
       const data = await response.json()
 
@@ -36,7 +40,7 @@ function App() {
     } catch (err) {
       setError('Network error. Please try again.')
     } finally {
-      setLoading(false)
+      setShowAnimation(false)
     }
   }
 
@@ -63,10 +67,10 @@ function App() {
           />
           <button
             onClick={checkServiceability}
-            disabled={loading}
-            className={loading ? 'loading' : ''}
+            disabled={showAnimation}
+            className={showAnimation ? 'loading' : ''}
           >
-            {loading ? 'Checking...' : 'Check Service'}
+            {showAnimation ? 'Checking...' : 'Check Service'}
           </button>
         </div>
 
@@ -76,7 +80,7 @@ function App() {
           </div>
         )}
 
-        {loading && (
+        {showAnimation && (
           <div className="loading-container">
             <div className="truck-scene">
               {/* Sky with clouds */}
